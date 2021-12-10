@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b09c2856-5085-43f6-a503-af9d417fb92e": {
+      "ProjectGuid": "b09c2856-5085-43f6-a503-af9d417fb92e",
+      "DisplayName": "Admin.YTMovie",
+      "ColorIndex": 0
+    },
+    "07728728-cb5f-4d4c-b389-7b417a2b86e3": {
+      "ProjectGuid": "07728728-cb5f-4d4c-b389-7b417a2b86e3",
+      "DisplayName": "ConsoleTest",
+      "ColorIndex": 1
+    },
+    "1053bd93-3687-4cf8-ab74-4a9462db3ede": {
+      "ProjectGuid": "1053bd93-3687-4cf8-ab74-4a9462db3ede",
+      "DisplayName": "YTMovie",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Diğer Dosyalar",
+      "ColorIndex": -1
+    },
+    "fdd94a8e-6570-43d2-b3e0-80804f1314fc": {
+      "ProjectGuid": "fdd94a8e-6570-43d2-b3e0-80804f1314fc",
+      "DisplayName": "Business",
+      "ColorIndex": 3
+    },
+    "71240c0e-34b7-45cd-bd4b-df38c764c67b": {
+      "ProjectGuid": "71240c0e-34b7-45cd-bd4b-df38c764c67b",
+      "DisplayName": "DataAccess",
+      "ColorIndex": 4
+    },
+    "db30c955-4064-45b6-8083-790c602cba60": {
+      "ProjectGuid": "db30c955-4064-45b6-8083-790c602cba60",
+      "DisplayName": "Core",
+      "ColorIndex": 5
+    },
+    "7d788d37-4205-45bd-8981-869fab075592": {
+      "ProjectGuid": "7d788d37-4205-45bd-8981-869fab075592",
+      "DisplayName": "Entities",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}

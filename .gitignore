@@ -25,6 +25,7 @@ _UpgradeReport_Files/
 bin/
 obj/
 TestResults/
+Admin.YTMovie/wwwroot/theme/
 ###################
 # Web publish log #
 ###################

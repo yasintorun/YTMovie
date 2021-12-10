@@ -1,0 +1,12 @@
+﻿.form-control {
+    margin-bottom: 10px !important;
+}
+
+
+.field-validation-error {
+    color: orangered !important;
+}
+
+.input-validation-error {
+    border: 1px solid orangered;
+}

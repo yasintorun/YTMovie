@@ -1,0 +1,37 @@
+﻿@model Entity.Concrete.Genre
+
+<div class="card">
+    <div class="card-header">
+        <h2></h2>
+    </div>
+    <div class="card-body pb-5 px-sm-5 pt-50">
+        <div class="text-center mb-2">
+            <h1 class="mb-1">Yeni Tür Ekle</h1>
+            <p>Tüm alanları eksiksiz doldurun.</p>
+        </div>
+
+        @using (Html.BeginForm("AddNewGenre", "Genre", FormMethod.Post))
+        {
+            <div class="px-5">
+
+            <div class="row px-5">
+                <div class="col-12 mb-1">
+                    <label class="form-label" for="name">Tür Adı</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeHolder = "Tür Adı" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+                <div class="col-12 mb-1">
+                    <label class="form-label" for="name">Durum</label>
+                    <select name="Status" class="form-select form-select-lg form-control" id="selectGenreStatus">
+                        <option selected="" value="1">Aktif</option>
+                        <option value="0">Pasif</option>
+                    </select>
+                </div>
+                <div class="col-12 text-center mt-2 pt-50">
+                    <button id="addGenreBtn" type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light">Ekle</button>
+                </div>
+            </div>
+            </div>
+        }
+    </div>
+</div>

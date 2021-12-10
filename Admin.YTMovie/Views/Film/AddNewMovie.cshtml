@@ -1,0 +1,72 @@
+﻿@model Entity.Concrete.Movie
+
+<div class="modal fade show" id="editUser" tabindex="-1" style="display: none; padding-left: 0px;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
+        <div class="modal-content">
+            <div class="modal-header bg-transparent">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-5 px-sm-5 pt-50">
+                <div class="text-center mb-2">
+                    <h1 class="mb-1">Yeni Film Ekle</h1>
+                    <p>Tüm alanları eksiksiz doldurun.</p>
+                </div>
+                
+                    <form id="addMovieForm" asp-action="Index" method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="@Url.Action("Index", "Film")">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="form-label" for="name">Film Adı</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeHolder = "Film Adı" })
+                                @Html.ValidationMessageFor(x => x.Name)
+                            </div>
+                            <div class="col-4 col-md-4">
+                                <label class="form-label" for="modalEditUserFirstName">Imdb Puanı</label>
+                                @Html.TextBoxFor(x => x.IMDB, new { @class = "form-control", @type = "number", @step = "0.1", @min = "0", @max = "10", @placeHolder = "0" })
+                                @Html.ValidationMessageFor(x => x.IMDB)
+                            </div>
+                            <div class="col-4 col-md-4">
+                                <label class="form-label" for="modalEditUserFirstName">Çıkış Tarihi</label>
+                                @Html.TextBoxFor(x => x.Year, new { @class = "form-control", @type = "number", @step = "1", @min = "1950", @max = "2022", @placeHolder = "2020" })
+                                @Html.ValidationMessageFor(x => x.Year)
+                            </div>
+                            <div class="col-4 col-md-4">
+                                <label class="form-label" for="modalEditUserFirstName">Film Süresi</label>
+                                @Html.TextBoxFor(x => x.Time, new { @class = "form-control", @placeHolder = "2 saat 13 dakika" })
+                                @Html.ValidationMessageFor(x => x.Time)
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="name">Film Poster Link (1000x400)</label>
+                                @Html.TextBoxFor(x => x.PosterLink, new { @class = "form-control", @placeHolder = "www." })
+                                @Html.ValidationMessageFor(x => x.PosterLink)
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="name">Film WallPaper Link (1920x1080)</label>
+                                @Html.TextBoxFor(x => x.WallpaperLink, new { @class = "form-control", @placeHolder = "www." })
+                                @Html.ValidationMessageFor(x => x.WallpaperLink)
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="name">Film Video Link (.mp4 şeklinde olan link)</label>
+                                @Html.TextBoxFor(x => x.VideoLink, new { @class = "form-control", @placeHolder = "www." })
+                                @Html.ValidationMessageFor(x => x.VideoLink)
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="name">Film Açıklaması (Maksimum 200 karakter)</label>
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeHolder = "Film hakkında basit açıklama" })
+                                @Html.ValidationMessageFor(x => x.Description)
+                            </div>
+                            <div class="col-12 text-center mt-2 pt-50">
+                                <button type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light">Ekle</button>
+                                <button type="reset" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="modal" aria-label="Close">
+                                    Vazgeç
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}

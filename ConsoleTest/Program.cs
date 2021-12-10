@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.Abstract;
+using Business.DependencyResolvers.Ninject;
+using System;
 
 namespace ConsoleTest
 {
@@ -6,7 +8,10 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IGenreService genreService = InstanceFactory.GetInstance<IGenreService>();
+            var result = genreService.Add(new Entity.Concrete.Genre() { Name = "Aksiyon", Status = true });
+
+            Console.WriteLine(result.Message);
         }
     }
 }
