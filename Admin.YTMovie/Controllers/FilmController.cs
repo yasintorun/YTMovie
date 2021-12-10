@@ -2,6 +2,7 @@
 using Business.DependencyResolvers.Ninject;
 using Business.Validations.FluentValidation;
 using CoreLayer.Extensions;
+using Entities.Dtos;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,33 +15,39 @@ namespace Admin.YTMovie.Controllers
     public class FilmController : Controller
     {
         private IMovieService _movieService = InstanceFactory.GetInstance<IMovieService>();
-        [Route("Film")]
+        private IGenreService _genreService = InstanceFactory.GetInstance<IGenreService>();
+        private IMovieGenreService _movieGenreService = InstanceFactory.GetInstance<IMovieGenreService>();
         public IActionResult Index()
         {
-            return View();
+            var movies = _movieService.GetMovieDetails();
+
+            return View(movies);
         }
 
 
         [HttpGet]
-        public PartialViewResult AddNewMovie()
+        public IActionResult AddNewMovie()
         {
-            return PartialView();
+            var genres = _genreService.GetAll();
+            ViewBag.Genres = genres.Data;
+            return View();
         }
 
         [HttpPost]
-        public void AddNewMovie(Movie movie)
+        public IActionResult AddNewMovie(AddMovieDto addMovieDto)
         {
-            if(this.Validate(new MovieValidator(), movie))
+            if(this.Validate(new MovieValidator(), addMovieDto.Movie))
             {
-                var result = _movieService.Add(movie);
-                if(result.Success)
-                {
+                var result = _movieService.AddWithGenres(addMovieDto);   
+                
+                this.SetMessage(result);
 
-                }
+                return RedirectToAction("Index");
             } else 
             {
                 //doğrulama hatası
             }
+            return View();
         }
     }
 }

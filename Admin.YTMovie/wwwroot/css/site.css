@@ -5,8 +5,9 @@
 
 .field-validation-error {
     color: orangered !important;
+    margin-bottom: 10px;
 }
 
 .input-validation-error {
-    border: 1px solid orangered;
+    border: 1px solid #ab6c54 !important;
 }

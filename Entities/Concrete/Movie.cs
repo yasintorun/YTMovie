@@ -11,8 +11,8 @@ namespace Entity.Concrete
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public double IMDB { get; set; }
-        public string Year { get; set; }
+        public float IMDB { get; set; }
+        public int Year { get; set; }
         public string Time { get; set; }
         public string VideoLink { get; set; }
         public string PosterLink { get; set; }

@@ -57,9 +57,9 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
                                                 <span>Düzenle</span>
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="/Genre/ChangeStatusGenre/@genre.Id">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                                                <span>Sil</span>
+                                                <span>@(genre.Status?"Pasif Yap":"Aktif Yap")</span>
                                             </a>
                                         </div>
                                     </div>
@@ -73,13 +73,26 @@
     </div>
 </div>
 
+
+@* ToDo: Burada tüm site içleri için toastr entegrasyonu yapılacak.
+    
+Status true false yerine string ifade alsın bu sayede 2 mesaj değilde cs tarafından bir çok mesaj içeriğide gönderilebilir.
+Ayrıca if else kısmını dinamik olarak değiştir.
+
+*@
 <script type="text/javascript">
     $(document).ready(function () {
         toastr.options.positionClass = "toast-top-center"
+        alert("asd")
+        const status = @ViewBag.Status
+        
+      
+        
+        if(status == null ||status == undefined) return;
 
-        if ('@TempData["message"]' == "added") {
-            toastr.success('Eklendi');
-        } else if ('@TempData["message"]' == "error") {
+        if (status) {
+            toastr.success(@ViewBag.Message);
+        } else {
             toastr.error(@ViewBag.Message)
         }
     });

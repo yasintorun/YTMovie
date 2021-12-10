@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Core.Utils.Results;
+using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,8 @@ namespace CoreLayer.Extensions
 {
     public static class ControllerExtension
     {
+        public static object TempData { get; private set; }
+
         public static bool Validate<T>(this Controller controller, AbstractValidator<T> rules, T t)
         {
             ValidationResult results = rules.Validate(t);
@@ -26,6 +29,12 @@ namespace CoreLayer.Extensions
                 }
                 return false;
             }
+        }
+
+        public static void SetMessage(this Controller controller, IResult result)
+        {
+            controller.ViewBag.Status = result == null || !result.Success ? true : false;
+            controller.ViewBag.Message = result.Message ?? "";
         }
     }
 }

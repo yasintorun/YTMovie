@@ -1,8 +1,9 @@
 ﻿@model Entity.Concrete.Genre
 @{
-    ViewData["Title"] = "Yeni Film Türü Ekle";
+    ViewData["Title"] = "Film Türünü Güncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="card">
     <div class="card-header">
         <h2></h2>
@@ -13,28 +14,29 @@
             <p>Tüm alanları eksiksiz doldurun.</p>
         </div>
 
-        @using (Html.BeginForm("AddNewGenre", "Genre", FormMethod.Post))
+        @using (Html.BeginForm("UpdateGenre", "Genre", FormMethod.Post))
         {
             <div class="px-5">
 
             <div class="row px-5">
                 <div class="col-12 mb-1">
                     <label class="form-label" for="name">Tür Adı</label>
-                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeHolder = "Tür Adı" })
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeHolder = "Tür Adı", @value=Model.Name })
                     @Html.ValidationMessageFor(x => x.Name)
                 </div>
                 <div class="col-12 mb-1">
                     <label class="form-label" for="name">Durum</label>
-                    <select name="Status" class="form-select form-select-lg form-control" id="selectGenreStatus">
-                        <option selected="" value="1">Aktif</option>
-                        <option value="0">Pasif</option>
-                    </select>
+                    @Html.DropDownListFor(x => x.Status, new SelectList(new []{
+                        new {Value="true", Text="Aktif", Selected=Model.Status==true},
+                        new {Value="false", Text="Pasif", Selected=Model.Status==false}
+                    }, "Value", "Text"), new {@class = "form-select form-select-lg form-control"})
                 </div>
                 <div class="col-12 text-center mt-2 pt-50">
-                    <button id="addGenreBtn" type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light">Ekle</button>
+                    <button id="updateGenreBtn" type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light">Güncelle</button>
                 </div>
             </div>
             </div>
         }
     </div>
 </div>
+

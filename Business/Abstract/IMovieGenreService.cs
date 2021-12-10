@@ -1,5 +1,4 @@
 ﻿using Core.Business;
-using Core.Utils.Results;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IGenreService : IBaseService<Genre>
+    public interface IMovieGenreService : IBaseService<MovieGenre>
     {
-        IResult ChangeStatus(int id);
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Core.DataAccess;
-using Entities.Dtos;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IMovieDal : IEntityRepository<Movie>
+    public interface IMovieGenreDal : IEntityRepository<MovieGenre>
     {
-        List<MovieDto> GetMovieDetails();
+
     }
 }

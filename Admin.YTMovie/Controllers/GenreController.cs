@@ -39,14 +39,8 @@ namespace Admin.YTMovie.Controllers
             {
                 var result = _genreService.Add(genre);
 
-                if(result == null || !result.Success)
-                {
-                    TempData["message"] = "error";
-                    ViewBag.Message = result.Message;
-                } else
-                {
-                    TempData["message"] = "added";
-                }
+                this.SetMessage(result);
+
                 return RedirectToAction("Index");
             } else
             {
@@ -60,17 +54,39 @@ namespace Admin.YTMovie.Controllers
         public IActionResult UpdateGenre(int id)
         {
             var genre = _genreService.GetById(id);
-            if(genre == null)
+            if(genre == null || genre.Data == null || !genre.Success)
             {
                 return RedirectToAction("Index");
             }
-            return View(genre);
+            return View(genre.Data);
         }
 
         [HttpPost]
         public IActionResult UpdateGenre(Genre genre)
         {
+            if(this.Validate(new GenreValidator(), genre))
+            {
+                var result = _genreService.Update(genre);
+                
+                this.SetMessage(result);
+
+                return RedirectToAction("Index");
+            } else
+            {
+                // Doğrulama Hatası
+            }
             return View(genre);
         }
+
+
+        public IActionResult ChangeStatusGenre(int id)
+        {
+            var result = _genreService.ChangeStatus(id);
+            
+            this.SetMessage(result);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
