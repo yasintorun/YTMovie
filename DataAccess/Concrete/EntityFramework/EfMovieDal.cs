@@ -12,10 +12,11 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfMovieDal : EfEntityRepositoryBase<Movie, MovieContext>, IMovieDal
     {
-        public List<MovieDto> GetMovieDetails()
+        public List<MovieDto> GetMoviesByDetails()
         {
             using (var context = new MovieContext())
             {
+                //var r = context.MovieGenres.ToLookup(x => x.MovieId);
                 var result = (from m in context.Movies
                               join mg in context.MovieGenres on m.Id equals mg.MovieId
                               join g in context.Genres on mg.GenreId equals g.Id
@@ -24,15 +25,13 @@ namespace DataAccess.Concrete.EntityFramework
                                   Id = m.Id,
                                   Movie = m,
                                   genre = g
-                              }).GroupBy(x => x.Id);
-                             // .GroupBy(x => x.Id)
-                             //.Select(x => new MovieDto()
-                             //{
-                             //    Genres = x.Select(y => y.genre).ToList(),
-                             //    Movie = x.FirstOrDefault(y => y.Id == x.Key).Movie,
-                             //}).ToList();
-                
-                return null;
+                              }).ToLookup(x => x.Id).Select(x => new MovieDto()
+                              {
+                                  Genres = x.Select(x => x.genre).ToList(),
+                                  Movie = x.FirstOrDefault(y => y.Movie.Id == y.Id).Movie,
+                              });
+                             
+                return result.ToList();
             }
         }
     }

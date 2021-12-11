@@ -21,7 +21,7 @@ namespace Admin.YTMovie.Controllers
         {
             var movies = _movieService.GetMovieDetails();
 
-            return View(movies);
+            return View(movies.Data);
         }
 
 
@@ -47,7 +47,7 @@ namespace Admin.YTMovie.Controllers
             {
                 //doğrulama hatası
             }
-            return View();
+            return AddNewMovie();
         }
     }
 }

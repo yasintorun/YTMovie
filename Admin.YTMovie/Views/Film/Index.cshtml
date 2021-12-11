@@ -1,4 +1,4 @@
-﻿@model List<Entity.Concrete.Movie>
+﻿@model List<Entities.Dtos.MovieDto>
 
 <div class="container-fluid">
     <div class="text-center mb-4">
@@ -8,28 +8,28 @@
         <a href="/Film/AddNewMovie" type="button" class="btn btn-primary waves-effect waves-float waves-light">Yeni Film Ekle</a>
     </div>
     <div class="row">
-        @foreach (var movie in Model)
+        @foreach (var item in Model)
         {
             <div class="col-md-3">
                 <div class="card">
-                    <div style="position:relative; height:400px; background-size:cover !important; object-fit: cover; background: transparent url(https://cdn.shopify.com/s/files/1/0548/8404/0870/products/TheFrontLine-WarMoviePoster_821048c5-929c-44af-97ea-75dc51073889_1200x.jpg?v=1617381737) no-repeat center center;">
+                    <div style="position:relative; height:400px; background-size:cover !important; object-fit: cover; background: transparent url(@item.Movie.PosterLink) no-repeat center center;">
                         <div class="position-absolute top-0 start-0">
-                            <span class="badge badge-glow bg-primary">IMDB: 7.0</span>
+                            <span class="badge badge-glow bg-primary">IMDB: @item.Movie.IMDB.ToString().Replace(",", ".")</span>
                         </div>
                         <div class="position-absolute top-0 end-0">
-                            <span class="badge badge-glow bg-warning">2 saat 13 dakika</span>
+                            <span class="badge badge-glow bg-warning">@item.Movie.Time</span>
                         </div>
 
                     </div>
                     <div class="card-body">
                         <p class="text-center">
-                            <a class="card-text fw-bold">@movie.Name asda sdıj asdj aksd jaskd jaksd jalksd jkalsdjaksldjklas</a>
+                            <a class="card-text fw-bold">@item.Movie.Name</a>
                         </p>
                         <div class="my-2">
-                            <span class="badge bg-danger">Aksiyon</span>
-                            <span class="badge bg-danger">Macera</span>
-                            <span class="badge bg-danger">Bilim Kurgu</span>
-                            <span class="badge bg-danger">Tarih</span>
+                            @foreach(var genre in item.Genres)
+                            {
+                                <span class="badge bg-danger">@genre.Name</span>
+                            }
                         </div>
                     </div>
                 </div>

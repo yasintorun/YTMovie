@@ -43,7 +43,7 @@ namespace Business.Concrete
 
         public IDataResult<List<MovieDto>> GetMovieDetails()
         {
-            return new SuccessDataResult<List<MovieDto>>(_movieDal.GetMovieDetails(), "Listelendi");
+            return new SuccessDataResult<List<MovieDto>>(_movieDal.GetMoviesByDetails(), "Listelendi");
         }
     }
 }
