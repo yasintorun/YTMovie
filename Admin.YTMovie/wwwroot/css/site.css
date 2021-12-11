@@ -11,3 +11,7 @@
 .input-validation-error {
     border: 1px solid #ab6c54 !important;
 }
+
+.dark-layout label {
+    color: #94afe5 !important;
+}

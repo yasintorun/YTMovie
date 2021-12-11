@@ -14,6 +14,8 @@ namespace Business.Abstract
     {
         IResult AddWithGenres(AddMovieDto dto);
 
-        IDataResult<List<MovieDto>> GetMovieDetails();
+        IDataResult<List<MovieDto>> GetMoviesByDetails();
+        IDataResult<MovieDto> GetDetail(int movieId);
+        IResult EditWithGenres(AddMovieDto addMovieDto);
     }
 }

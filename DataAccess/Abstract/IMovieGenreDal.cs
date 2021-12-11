@@ -10,6 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IMovieGenreDal : IEntityRepository<MovieGenre>
     {
-
+        void DeleteByMovieId(int movieId);
     }
 }

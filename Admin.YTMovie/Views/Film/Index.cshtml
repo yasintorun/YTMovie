@@ -21,15 +21,32 @@
                         </div>
 
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="height: 125px">
                         <p class="text-center">
-                            <a class="card-text fw-bold">@item.Movie.Name</a>
+                            <a href="/Film/Detay/@item.Movie.Id" class="card-text fw-bold">@item.Movie.Name</a>
                         </p>
                         <div class="my-2">
                             @foreach(var genre in item.Genres)
                             {
-                                <span class="badge bg-danger">@genre.Name</span>
+                                <span class="badge bg-warning mb-1">@genre.Name</span>
                             }
+                        </div>
+                       
+                    </div>
+                    <div class="card-footer">
+                         <div class="text-center">
+                            <a href="/Film/EditMovie/@item.Movie.Id" class="btn btn-primary waves-effect waves-float waves-light">Düzenle</a>
+                            <span class="mx-1"></span>
+                            <button 
+                                id="deleteItem"
+                                data-id="@item.Movie.Id" 
+                                class="btn btn-danger waves-effect waves-float waves-light deleteItem" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#deleteMovie"
+                                data-path="@Url.Action("DeleteMovie", "Film", new {id = item.Movie.Id})"
+                            >
+                                    Sil
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -37,3 +54,35 @@
         }
     </div>
 </div>
+
+<div class="modal modal-danger fade show" id="deleteMovie" style="display: none;" tabindex="-1" aria-labelledby="addNewCardTitle" style="display: block; padding-left: 0px;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-transparent">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-sm-5 mx-50 pb-5">
+                <h1 class="text-center mb-1" id="addNewCardTitle">Film silinecektir onaylıyor musunuz?</h1>
+                <p class="text-center">
+                    <span class="badge bg-danger">Bu işlem Geri alınamaz</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnContinueDelete" type="button" class="btn btn-danger waves-effect waves-float waves-light" data-bs-dismiss="modal">Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var path_to_delete;
+
+    $(".deleteItem").click(function(e) {
+        path_to_delete = $(this).data('path');
+        console.log(path_to_delete);
+    });
+
+    $('#btnContinueDelete').click(function () {
+        window.location = path_to_delete;
+    });
+</script>

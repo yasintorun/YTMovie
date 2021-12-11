@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Business;
+using Core.Utils.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
 using System;
@@ -17,6 +18,19 @@ namespace Business.Concrete
         public MovieGenreManager(IMovieGenreDal movieGenreDal) : base(movieGenreDal)
         {
             _movieGenreDal = movieGenreDal;
+        }
+
+        public IResult DeleteByMovie(int movieId)
+        {
+            try
+            {
+                _movieGenreDal.DeleteByMovieId(movieId);
+                return new SuccessResult("Film Türleri silindi");
+            } 
+            catch(Exception ex) 
+            {
+                return new ErrorResult(ex.Message); 
+            }
         }
     }
 }

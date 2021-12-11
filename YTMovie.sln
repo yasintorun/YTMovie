@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30413.136
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YTMovie", "YTMovie\YTMovie.csproj", "{1053BD93-3687-4CF8-AB74-4A9462DB3EDE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{7D788D37-4205-45BD-8981-869FAB075592}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{71240C0E-34B7-45CD-BD4B-DF38C764C67B}"
@@ -22,16 +20,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.YTMovie", "Admin.YTMo
 		{FDD94A8E-6570-43D2-B3E0-80804F1314FC} = {FDD94A8E-6570-43D2-B3E0-80804F1314FC}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTMovieWeb", "YTMovieWeb\YTMovieWeb.csproj", "{8310BCA4-5F1C-466B-B0B9-C1DFA5564BFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1053BD93-3687-4CF8-AB74-4A9462DB3EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1053BD93-3687-4CF8-AB74-4A9462DB3EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1053BD93-3687-4CF8-AB74-4A9462DB3EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1053BD93-3687-4CF8-AB74-4A9462DB3EDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D788D37-4205-45BD-8981-869FAB075592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D788D37-4205-45BD-8981-869FAB075592}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D788D37-4205-45BD-8981-869FAB075592}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +52,10 @@ Global
 		{B09C2856-5085-43F6-A503-AF9D417FB92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B09C2856-5085-43F6-A503-AF9D417FB92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B09C2856-5085-43F6-A503-AF9D417FB92E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8310BCA4-5F1C-466B-B0B9-C1DFA5564BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8310BCA4-5F1C-466B-B0B9-C1DFA5564BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8310BCA4-5F1C-466B-B0B9-C1DFA5564BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8310BCA4-5F1C-466B-B0B9-C1DFA5564BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

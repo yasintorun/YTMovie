@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - YTMovieWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animate.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/slick.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/slick-theme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/YTMovieWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/YTMovieWeb.styles.css" asp-append-version="true" />
+</head>
+<body>
+<header class="main-nav d-flex align-items-center">
+        <div class="navbar navbar-expand-lg" >
+            <div class="container-fluid">
+                <div class="d-flex align-items-center">
+                    <div class="navbar-brand pt-0">
+                        <a href='@Url.Action("Index", "Film")'>
+                            <img src="https://excellencetheme.com/templates/avastream/images/header-logo.png" />
+                        </a>
+                    </div>
+                    <div class="">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("ANASAYFA", "Index", "Film")</li>
+                            <li>@Html.ActionLink("FİLMLER", "About", "Film")</li>
+                            <li>@Html.ActionLink("İLETİŞİm", "Contact", "Film")</li>
+                            <li>@Html.ActionLink("HAKKIMIZDA", "About", "Film")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<div class="main body-content" id="main">
+    @RenderBody()
+    <footer>
+        <div class="footer-nav">
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="https://excellencetheme.com/templates/avastream/images/header-logo.png" />
+                        <p class="my-3">Here , write the complete address of the Registered office address along with telephone number.</p>
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <h5>Display Type</h5>
+                        <ul class="ps-0">
+                            <li><a href="#">Aksiyon</a></li>
+                            <li><a href="#">Macera</a></li>
+                            <li><a href="#">Komedi</a></li>
+                            <li><a href="#">Animasyon</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <h5>Display Type</h5>
+                        <ul class="ps-0">
+                            <li><a href="#">Aksiyon</a></li>
+                            <li><a href="#">Macera</a></li>
+                            <li><a href="#">Komedi</a></li>
+                            <li><a href="#">Animasyon</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <h5>Display Type</h5>
+                        <ul class="ps-0">
+                            <li><a href="#">Aksiyon</a></li>
+                            <li><a href="#">Macera</a></li>
+                            <li><a href="#">Komedi</a></li>
+                            <li><a href="#">Animasyon</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark">
+            <div class="container-fluid py-4">
+                © Copyright 2021, Tüm Hakları Saklıdır  <span class="mx-2">|</span> <span class="footer-yt">Yasin Torun</span>
+            </div>
+        </div>
+    </footer>
+</div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

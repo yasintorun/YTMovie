@@ -10,6 +10,7 @@ namespace Entities.Dtos
 {
     public class AddMovieDto : BaseDto
     {
+        public int Id { get; set; }
         public Movie Movie { get; set; }
         public int[] GenreIds { get; set; }
     }

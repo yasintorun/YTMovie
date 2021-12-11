@@ -18,7 +18,7 @@ namespace Core.Business
         {
             _entityRepository = entityRepository;
         }
-        public Result Add(T entity)
+        public virtual Result Add(T entity)
         {
            // try
            // {
@@ -30,7 +30,7 @@ namespace Core.Business
             }*/
         }
 
-        public Result Delete(T entity)
+        public virtual Result Delete(T entity)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Core.Business
             }
         }
 
-        public IDataResult<T> Get(Expression<Func<T, bool>> filter)
+        public virtual IDataResult<T> Get(Expression<Func<T, bool>> filter)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Core.Business
             }
         }
 
-        public IDataResult<List<T>> GetAll(Expression<Func<T, bool>> filter = null)
+        public virtual IDataResult<List<T>> GetAll(Expression<Func<T, bool>> filter = null)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace Core.Business
             }
         }
 
-        public IDataResult<T> GetById(int id)
+        public virtual IDataResult<T> GetById(int id)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Core.Business
             }
         }
 
-        public Result Update(T entity)
+        public virtual Result Update(T entity)
         {
             try
             {
