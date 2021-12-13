@@ -1,4 +1,4 @@
-﻿using Entity.Concrete;
+﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,5 +17,6 @@ namespace DataAccess.Concrete
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

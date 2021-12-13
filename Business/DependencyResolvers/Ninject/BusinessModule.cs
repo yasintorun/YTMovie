@@ -23,6 +23,9 @@ namespace Business.DependencyResolvers.Ninject
 
             Bind<IMovieGenreDal>().To<EfMovieGenreDal>().InSingletonScope();
             Bind<IMovieGenreService>().To<MovieGenreManager>().InSingletonScope();
+
+            Bind<ICommentDal>().To<EfCommentDal>().InSingletonScope();
+            Bind<ICommentService>().To<CommentManager>().InSingletonScope();
         }
     }
 }

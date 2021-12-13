@@ -40,7 +40,12 @@
       "ProjectGuid": "7d788d37-4205-45bd-8981-869fab075592",
       "DisplayName": "Entities",
       "ColorIndex": 6
+    },
+    "8310bca4-5f1c-466b-b0b9-c1dfa5564bfd": {
+      "ProjectGuid": "8310bca4-5f1c-466b-b0b9-c1dfa5564bfd",
+      "DisplayName": "YTMovieWeb",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 8
 }

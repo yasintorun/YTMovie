@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using Entity.Concrete
+@using Entities.Concrete
 @model List<Genre>
 
 <div class="row" id="basic-table">
@@ -73,7 +73,12 @@
     </div>
 </div>
 
-
+<script>
+    $(document).ready(function() {
+        console.log(@Html.Raw(ViewBag.Result))
+        YTLoad(@Html.Raw(ViewBag.Result))
+    })
+</script>
 @* ToDo: Burada tüm site içleri için toastr entegrasyonu yapılacak.
     
 Status true false yerine string ifade alsın bu sayede 2 mesaj değilde cs tarafından bir çok mesaj içeriğide gönderilebilir.

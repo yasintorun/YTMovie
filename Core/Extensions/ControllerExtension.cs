@@ -33,8 +33,11 @@ namespace CoreLayer.Extensions
 
         public static void SetMessage(this Controller controller, IResult result)
         {
-            controller.ViewBag.Status = result == null || !result.Success ? true : false;
-            controller.ViewBag.Message = result.Message ?? "";
+            string st = $"{{status: {(result == null || !result.Success ? true : false)},".ToLower();
+            var status = result == null || !result.Success ? true : false;
+            var message = result.Message ?? "";
+            var bytes = Encoding.Default.GetBytes($"{st} message: \"{message}\"}}");
+            controller.ViewBag.Result = Encoding.UTF8.GetString(bytes);
         }
     }
 }

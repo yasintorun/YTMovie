@@ -1,0 +1,29 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Entities.Concrete.Comment
+
+
+
+@*Yorum Gönderme Formu*@
+<div class="row">
+    <div class="col-md-6">
+        @using(Html.BeginForm("CommentForm", "Film",new {MovieId = Model?.MovieId}, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-12 form-group fs-5 my-3">
+                    <label>Adınız</label>
+                    @Html.TextBoxFor(x => x.Name, new {@class="form-control fs-5", @placeHolder="Adınız..", min="2", max="30"})
+                </div>
+                <div class="col-12 form-group my-3 fs-5">
+                    <label>Yorumunuz</label>
+                    @Html.TextAreaFor(x => x.CommentContent, 4, 250, new {@class="form-control fs-5", @placeHolder="Yorumunuz..", @min="10", @max="250"})
+                </div>
+                <div class="col-12 form-group my-3">
+                    <button class="btn d-block hvr-sweep-to-right">Yorumu Gönder</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

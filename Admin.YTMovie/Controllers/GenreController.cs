@@ -6,7 +6,7 @@ using Business.Abstract;
 using Business.DependencyResolvers.Ninject;
 using Business.Validations.FluentValidation;
 using CoreLayer.Extensions;
-using Entity.Concrete;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.YTMovie.Controllers
@@ -21,6 +21,7 @@ namespace Admin.YTMovie.Controllers
             {
                 return NotFound(genres);
             }
+            this.SetMessage(genres);
             return View(genres.Data);
         }
 

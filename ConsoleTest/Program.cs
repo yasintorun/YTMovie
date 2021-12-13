@@ -9,7 +9,7 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
             IGenreService genreService = InstanceFactory.GetInstance<IGenreService>();
-            var result = genreService.Add(new Entity.Concrete.Genre() { Name = "Aksiyon", Status = true });
+            var result = genreService.Add(new Entities.Concrete.Genre() { Name = "Aksiyon", Status = true });
 
             Console.WriteLine(result.Message);
         }

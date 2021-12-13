@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Concrete
+namespace Entities.Concrete
 {
     public class Movie : BaseEntity
     {
@@ -14,6 +14,7 @@ namespace Entity.Concrete
         public float IMDB { get; set; }
         public int Year { get; set; }
         public string Time { get; set; }
+        public int View { get; set; } = 0;
         public string VideoLink { get; set; }
         public string PosterLink { get; set; }
         public string WallpaperLink { get; set; }

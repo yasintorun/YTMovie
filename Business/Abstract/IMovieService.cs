@@ -1,7 +1,7 @@
 ﻿using Core.Business;
 using Core.Utils.Results;
 using Entities.Dtos;
-using Entity.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

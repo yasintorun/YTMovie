@@ -4,7 +4,7 @@ using Business.Validations.FluentValidation;
 using Core.Utils.Results;
 using CoreLayer.Extensions;
 using Entities.Dtos;
-using Entity.Concrete;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

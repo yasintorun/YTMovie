@@ -1,0 +1,137 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Entities.Dtos.CommentDto>
+<div class="row" id="basic-table">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header justify-content-between">
+                <h4 class="card-title">Filmlere Gelen Yorumlar</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Filmlere gelen tüm yorumlar burada listelenmiştir. Aşağıdaki açılır kutudan film seçerek filtreleyebilirsin.<br/>
+                    <strong>Pasif yorumları izleyiciler göremez.</strong> Sadece aktif yorumlar görünebilmektedir. Bir kişi yorum yaptığında pasif olarak kayıt edilir. 
+                    Yorumu <strong>aktif</strong> yapmadığın sürece o yorum websitede gözükmez.
+                </p>
+            </div>
+            <div class="row">
+                @if(ViewBag.Movies != null)
+                {
+                    <div class="col-md-12 mb-1">
+                        <select class="form-select form-select-lg form-control" id="selectMovie">
+                            <option selected="" value="0">Tümü</option>
+                            @foreach(var movie in ViewBag.Movies)
+                            {
+                                <option value="@movie.Id">@movie.Name</option>
+                            }
+                        </select>
+                    </div>
+                }
+                <div class=" col-12 table-responssive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ad</th>
+                                <th>Film Adı</th>
+                                <th>Durum</th>
+                                <th>Tarih</th>
+                                <th>Yorum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var comment in Model)
+                            {
+                                <tr>
+                                    <td><strong>@comment.Comment.Id</strong></td>
+                                    <td>
+                                        <span class="fw-bold">@comment.Comment.Name</span>
+                                    </td>
+                                    <td>@comment.Movie.Name</td>
+                                    <td>
+                                        @if(comment.Comment.Status)
+                                        {
+                                            <span class="badge rounded-pill badge-light-primary me-1">Aktif</span>
+                                        } else
+                                        {
+                                            <span class="badge rounded-pill badge-light-danger me-1">Pasif</span>
+                                        }
+                                    </td>
+                                    <td>@comment.Comment.CreatedAt.ToLongDateString()</td>
+                                    <td>
+                                        <p class="text-truncate" style="width: 80%;">
+                                            @comment.Comment.CommentContent
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0 waves-effect waves-float waves-light" data-bs-toggle="dropdown">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <button id="showCommentDetail" onclick="showModel(@comment.Comment.Id)" type="button" class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#showComment">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                                                    <span>Yorumu Görüntüle</span>
+                                                </button>
+                                                <a class="dropdown-item" href="/Comment/ChangeStatusComment/@comment.Comment.Id">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                                    <span>@(comment.Comment.Status?"Pasif Yap":"Aktif Yap")</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="modal-parent"></div>
+
+
+@*Bunu global hale getir.*@
+<script>
+    var model = JSON.parse(`@Json.Serialize(Model)`)
+    function showModel(id) {
+        if(!model) {
+            model = JSON.parse(`@Json.Serialize(Model)`)
+        }
+            
+        var comment = model.find(x => x.comment.id == id)
+
+        $("body").append(`
+            <div class="modal fade" id="showComment-${id}" tabindex="-1" aria-labelledby="showCommentAll" aria-modal="true" role="dialog" style="display: none;">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-transparent">
+                            <button onclick="removeElement(${id})" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-sm-5 mx-50 pb-5">
+                            <h1 class="text-center mb-1" id="addNewCardTitle">${comment.movie.name}</h1>
+                            <p><strong>${comment.comment.name}:<strong></p>
+                            <p class="text-center">${comment.comment.commentContent}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        $("#showComment-"+id).modal("show")
+    }
+    function removeElement(id) {
+        setTimeout(() => {
+            $('#showComment-'+id).remove()
+        }, 1000)
+    }
+</script>

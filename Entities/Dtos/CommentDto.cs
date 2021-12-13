@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class MovieDto : BaseDto
+    public class CommentDto : BaseDto
     {
-        public Movie Movie { get; set; }
-        public List<Genre> Genres { get; set; }
+        public Comment Comment{ get; set; }
+        public Movie Movie{ get; set; }
     }
 }
