@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolvers.Ninject;
 using CoreLayer.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.YTMovie.Controllers
 {
+    [Authorize]
     public class CommentController : Controller
     {
         ICommentService _commentService = InstanceFactory.GetInstance<ICommentService>();

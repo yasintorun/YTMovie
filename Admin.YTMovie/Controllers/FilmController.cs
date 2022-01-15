@@ -10,9 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Admin.YTMovie.Controllers
 {
+    [Authorize]
     public class FilmController : Controller
     {
         private IMovieService _movieService = InstanceFactory.GetInstance<IMovieService>();

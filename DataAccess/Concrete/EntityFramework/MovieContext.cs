@@ -18,5 +18,6 @@ namespace DataAccess.Concrete
         public DbSet<Genre> Genres { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

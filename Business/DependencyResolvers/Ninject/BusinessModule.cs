@@ -26,6 +26,9 @@ namespace Business.DependencyResolvers.Ninject
 
             Bind<ICommentDal>().To<EfCommentDal>().InSingletonScope();
             Bind<ICommentService>().To<CommentManager>().InSingletonScope();
+
+            Bind<IAdminDal>().To<EfAdminDal>().InSingletonScope();
+            Bind<ILoginService>().To<LoginManager>().InSingletonScope();
         }
     }
 }

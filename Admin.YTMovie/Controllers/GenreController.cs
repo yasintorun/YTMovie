@@ -7,10 +7,12 @@ using Business.DependencyResolvers.Ninject;
 using Business.Validations.FluentValidation;
 using CoreLayer.Extensions;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Admin.YTMovie.Controllers
 {
+    [Authorize]
     public class GenreController : Controller
     {
         private IGenreService _genreService = InstanceFactory.GetInstance<IGenreService>();

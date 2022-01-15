@@ -5,11 +5,11 @@
 }
 @model Entities.Dtos.MovieDto
     
-<div class="banner" style="background-image: url(@Model.Movie.WallpaperLink)">
+<div id="banner" class="banner" style="background-image: url(@Model.Movie.WallpaperLink)">
     <div>
         <div class="banner-body">
             <div class="d-flex align-items-center">
-                <div class="play-btn me-4">
+                <div class="play-btn me-4" id="play-video">
                     <i class="fa fa-play"></i>
                 </div>
                 <div class="ms-4 movie-name">
@@ -19,7 +19,12 @@
         </div>
     </div>
 </div>
-
+<div class="p-5">
+     <video id="video" width="720" height="1180" controls>
+      <source src="~/videos/video.mp4" type="video/mp4">
+      Your browser does not support HTML video.
+    </video>
+</div>
 <div class="">
     <div class="container-fluid">
         <div class="py-5 my-3 ">
@@ -51,16 +56,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="#" class="btn d-block hvr-sweep-to-right">
+                            <a id="playvideo" class="btn d-block hvr-sweep-to-right">
                                 <i class="fa fa-play"></i>
                                 İzle
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" class="btn d-block hvr-sweep-to-right">
+                            <button id="playTrailer" class="btn d-block hvr-sweep-to-right "data-bs-toggle="modal" data-bs-target="#show-fragman">
                                 <i class="fa fa-film"></i>
                                 Fragman
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -109,4 +114,46 @@
     </div>
 </section>
 
+
+<div id="show-fragman" class="modal " tabindex="-1">
+  <div class="modal-dialog modal-xl" style="max-width: 889px;">
+    <div class="modal-content">
+      <div class="modal-body w-100">
+       <iframe id="trailer" width="852" height="480" src="https://www.youtube.com/embed/mQ_F_0jA59k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button id="closeFragman" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 @await Component.InvokeAsync("PopularMovie")
+
+@section scripts {
+<script>
+    $("#video").hide()
+    $(document).ready(() => {
+        var fragmanLink = $("#trailer").attr("src");
+        $("#trailer").attr("src","");
+        $("#playerid").attr("src",video);
+
+        $("#play-video,#playvideo").click(() => {
+            $("#banner").hide()
+            $("#video").show()
+            console.log( $("#video"));
+            $("#video").trigger('play');
+            $(window).scrollTop($('#video').position().top);
+        })
+
+        $("#playTrailer").click(() => {
+            $("#trailer").attr("src",fragmanLink);
+        })
+
+        $("#closeFragman").click(() => {
+            $("#trailer").attr("src","");
+        })
+    })
+</script>
+}
